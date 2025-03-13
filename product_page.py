@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+import time
 
 class ProductPage(BasePage):
     def add_product_to_basket(self):
@@ -11,6 +12,7 @@ class ProductPage(BasePage):
             *ProductPageLocators.MESSAGE_BOOK_NAME)
         book_name = self.browser.find_element(
             *ProductPageLocators.BOOK_NAME)
+        print("!   message_book_name.text", message_book_name.text)
         assert book_name.text == message_book_name.text, "Название в сообщении не совпадает с добавленным товаром"
 
     def added_product_price_is_price_on_product_page(self):
