@@ -13,7 +13,6 @@ class BasketPageLocators():
 
 
 class MainPageLocators():
-    #LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     WELCOME_LINK = (By.CSS_SELECTOR, ".well-blank")
 
 

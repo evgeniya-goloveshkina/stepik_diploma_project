@@ -19,6 +19,7 @@ class TestAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     @pytest.mark.parametrize('promo_offer',
                              [pytest.param(i, marks=pytest.mark.xfail(i == 7, reason='Bug in this promo-link')) for i in
                               range(1, 2, 1)])
@@ -45,6 +46,7 @@ class TestAddToBasketFromProductPage():
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link, 0)
@@ -53,6 +55,7 @@ class TestAddToBasketFromProductPage():
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_page()
 
+    @pytest.mark.need_review
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
         page = ProductPage(browser, link, 0)
         page.open()
@@ -78,6 +81,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         browser.delete_all_cookies()
         link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{1}"

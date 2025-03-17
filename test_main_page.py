@@ -9,11 +9,6 @@ link = "http://selenium1py.pythonanywhere.com/"
 
 @pytest.mark.login_guest
 class TestLoginFromMainPage():
-    def go_to_login_page(browser):
-        login_link = browser.find_element(By.CSS_SELECTOR, "#login_link")
-        login_link.click()
-        login_page = LoginPage(browser, browser.current_url)
-        login_page.should_be_login_page()
 
     def test_guest_can_go_to_login_page(self, browser):
         page = MainPage(browser, link)
