@@ -17,6 +17,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function")
 def browser(request):
+
     browser_name = request.config.getoption("browser_name")
     user_language = request.config.getoption("language")
 
@@ -36,6 +37,8 @@ def browser(request):
         r_browser = webdriver.Firefox(options=options_firefox)
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
+    #r_browser.implicitly_wait(5)
+    r_browser.delete_all_cookies()
     yield r_browser
     print("\nquit browser..")
     r_browser.quit()
